@@ -1,0 +1,72 @@
+Morse Code
+
+settable: the fundamental dit interval.  let the user
+make it fast or slow.  FOr now, 200ms?
+
+a beeper that beeps when your tapper is down.
+be able to tap a box.  buttons are too small.
+
+We need some modes, 
+-- type letters and it taps/beeps it out for you.
+   This is for learning the alphabet.  
+-- tap and it says what letters, you spell stuff,
+   practice your letters.
+-- Put in a whole message and it beeps the whole thing.
+-- listening practice/test.  It beeps random words and you
+   write the letters, decode.  Score?
+-- sending practice/test.  It gives you a message to 
+   send, and you tap it out.  Score?
+
+To represent the taps, we need dit dah list. 
+Period and hyphen will do.  
+We also need to represent the spaces as 
+dit, dah or longer or really long (?).  
+
+When the mouse goes down, that ends a non-beep
+space and it should classified as one of the
+space types.  If it is a long space we can
+report the letter being built.  It is is longer
+we get a new word?  I need to learn the Code.
+
+When the mouse goes up. that is a dit or a dah.
+You can tell by the length which.  
+
+2025 May 27
+
+Flutter course shared/sound2 has the sound working.
+I found a beep file (had to clip it, found a tool for THAT)
+and you just play and stop it with buttons.  I switched
+to using a listener on a box and that works too.
+
+Then I redid this in Scode (here) and added a BLoC
+layer.  I can capture the "dit"s and "dah"s, but now the 
+sound stopped working.  And you might think it could be
+anything about the port, but I actually (accidentally)
+made the changes in sound2 and it stopped making sound.
+I put them back and it started making sound again.  So ...
+something about state interaction is screwy?
+
+Strategy - take the main.dart from sound2 that works and 
+make sure it works in Scode.  Then you can mess with the
+state stuff and see what is the problem.  Lilypad theory.
+
+2025 May 28
+
+The just-sound version works in the new projects, scode.
+So ... something about how I do state is the problem?
+
+RE design, I think we do not need a way to represent longer
+spaces.  What we have to do is respond to them.  A dah
+space means start a new letter.  A 3-dah space means start
+a new word.  I think that's about all you need.
+
+To code this ... you cannot wait for the next tap and then
+measure how long the space was.  You have to have a timer
+set at the end of every beep.  If it goes more than a dah,
+you start a new letter.  If it goes more than 3 dahs, you
+start a new word.  And of course, if it is LESS than a
+dah, i.e., a tap starts before the timer times out, you
+need to desable the timer.  
+
+
+
