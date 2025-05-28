@@ -9,6 +9,8 @@ class TapState
   String letter; // letter being formed ".--."
   String word; // word being formed "cra"
 
+
+
   TapState( this.dt, this.letter, this.word );
 }
 

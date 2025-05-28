@@ -1,0 +1,20 @@
+2025 May 28
+
+The just-sound version works in the new projects, scode.
+So ... something about how I do state is the problem?
+
+RE design, I think we do not need a way to represent longer
+spaces.  What we have to do is respond to them.  A dah
+space means start a new letter.  A 3-dah space means start
+a new word.  I think that's about all you need.
+
+To code this ... you cannot wait for the next tap and then
+measure how long the space was.  You have to have a timer
+set at the end of every beep.  If it goes more than a dah,
+you start a new letter.  If it goes more than 3 dahs, you
+start a new word.  And of course, if it is LESS than a
+dah, i.e., a tap starts before the timer times out, you
+need to desable the timer.  
+
+It stopped working when I moved the AudioPlayer from 
+StatefulWidget to StatelesWidget. 
