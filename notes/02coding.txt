@@ -17,4 +17,6 @@ dah, i.e., a tap starts before the timer times out, you
 need to desable the timer.  
 
 It stopped working when I moved the AudioPlayer from 
-StatefulWidget to StatelesWidget. 
+StatefulWidget to StatelesWidget.  SO I made a hybrid
+state, which includd StatefulWidget for the AudioPlayer,
+but has BLoC cubits inside that for the dots and dashes.

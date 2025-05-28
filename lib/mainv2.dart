@@ -61,6 +61,7 @@ class Scode3 extends State<Scode2>
                     child: Text("tap here"),
                   ),
                   Text("letter: ${tc.state.letter}"),
+                  Text("word: ${tc.state.word}"),
                 ],
               ),
             ),
@@ -69,4 +70,6 @@ class Scode3 extends State<Scode2>
       ),
     );
   }
+
+
 }
